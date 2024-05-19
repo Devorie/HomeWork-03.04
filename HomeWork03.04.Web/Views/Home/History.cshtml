@@ -1,0 +1,40 @@
+﻿@using HomeWork03._04.Data
+@using HomeWork03._04.Data.wwwroot
+@model HistoryViewModel
+
+<div class="header">
+    <h1>History for @Model.Contributor.FirstName @Model.Contributor.LastName</h1>
+    <h3>Current Balance: @Model.Contributor.Balance</h3>
+</div>
+
+
+<div class="container mt-5">
+    <div class="row mt-3">
+        <div class="col-md-12">
+                <table class="table table-hover table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Action</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Actions a in Model.Actions)
+                        {
+                            <tr>
+                                <td>@a.Action</td>
+                                <td>@a.Date.ToLongDateString()</td>
+                                <td>@a.Amount</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <div class="col-md-6 offset-md-3 mt-3">
+                    <a href="/home/contributors" class="btn btn-primary">Back to Contributors</a>
+                </div>
+        </div>
+    </div>
+</div>
+
